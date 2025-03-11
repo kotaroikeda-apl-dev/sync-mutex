@@ -4,9 +4,11 @@
 
 ```sh
 go run cmd/ng/main.go # データ競合を発生させる
+go run cmd/basic/main.go # データ競合を防ぐ
 ```
 
 ## **学習ポイント**
 
 1. 複数の Goroutine が **`counter`** を同時に更新すると、データ競合（レースコンディション）が発生し、加算処理が正しく動作しない可能性がある。
-2. **`sync.Mutex`** を使って **`counter`** の更新を 1 つの Goroutine のみに制限することで、データ競合を防ぎ、正しい値を保証できる。
+2. **`sync.Mutex`** を使うことで、複数の Goroutine が **`counter`** を同時に更新することによるデータ競合（レースコンディション）を防げる。
+3. **`mu.Lock()`** と **`mu.Unlock()`** を適切に使うことで、各 Goroutine が順番に **`counter++`** を実行し、正しいカウント結果を保証できる。
