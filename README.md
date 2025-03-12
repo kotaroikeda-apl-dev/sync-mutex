@@ -6,6 +6,7 @@
 go run cmd/ng/main.go # データ競合を発生させる
 go run cmd/basic/main.go # データ競合を防ぐその1
 go run cmd/counter/main.go # データ競合を防ぐその2
+go run cmd/RWMutex/main.go # データ競合を防ぐその3
 ```
 
 ## **学習ポイント**
@@ -15,3 +16,4 @@ go run cmd/counter/main.go # データ競合を防ぐその2
 3. **`mu.Lock()`** と **`mu.Unlock()`** を適切に使うことで、各 Goroutine が順番に **`counter++`** を実行し、正しいカウント結果を保証できる。
 4. **`sync.Mutex`** を使って **`Increment()`** の更新処理をロックすることで、複数の Goroutine によるデータ競合を防げる。
 5. **`Value()`** で **`defer mu.Unlock()`** を使うことで、ロックの解除忘れを防ぎ、安全に **`val`** の値を取得できる。
+6. **`sync.RWMutex`** を使うことで、複数の Goroutine が同時にデータを安全に読み取ることができる (**`RLock()`**)。
