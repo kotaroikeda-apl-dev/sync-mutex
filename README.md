@@ -8,6 +8,7 @@ go run cmd/basic/main.go # Mutexを使ってデータ競合を防ぐ1
 go run cmd/counter/main.go # Mutexを使ってデータ競合を防ぐ2
 go run cmd/RWMutex/main.go # RWMutexを使ってデータ競合を防ぐ
 go run cmd/cond/main.go # Condを使ってデータ競合を防ぐ
+go run cmd/once/main.go # Onceを使って初期化処理を一度だけ実行する
 ```
 
 ## **学習ポイント**
@@ -20,3 +21,4 @@ go run cmd/cond/main.go # Condを使ってデータ競合を防ぐ
 6. **`sync.RWMutex`** を使うことで、複数の Goroutine が同時にデータを安全に読み取ることができる (**`RLock()`**)。
 7. **`sync.Cond`** を使うことで、条件が満たされるまで複数の Goroutine を効率的に待機させる方法を学べる。
 8. **`cond.Broadcast()`** を用いて、待機中のすべての Goroutine を同時に起こす仕組みが理解できる。
+9. **`sync.Once`** を使うことで、初期化処理を一度だけ実行する方法を学べる。
